@@ -1,0 +1,141 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+header {
+  width: 90%;
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+header .headline {
+  font-size: 32px;
+}
+
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.main-visual {
+  width: 100%; /* 横幅 */
+  height: 300px; /* 高さ */
+  /*background-color: orange; /* 背景色 */
+  background-image: url(img/mv.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.main-visual-content {
+  width: 40%; /* 横幅 */
+  height: 300px; /* 高さ */
+  /*background-color: gold; /* 背景色 */
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding-top: 105px;
+}
+
+.main-visual-text {
+  color: #fff;
+}
+
+.main-visual-name {
+  margin-top: 30px; /*上側の外側の余白*/
+  color: #fff;
+}
+
+main {
+  width: 800px; /* 横幅 */
+  background-color: green; /* 背景色 */
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.blog {
+  width: 540px; /* 横幅 */
+  background-color: limegreen; /* 背景色 */
+  float: left; /* 要素を左揃えで並べる */
+}
+
+.blog-headline {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+
+.blog-box {
+  padding-top: 50px;
+}
+
+.blog-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.blog-image {
+  float: left;
+  height: 180px;
+}
+
+.blog-text-headline {
+  padding-bottom: 15px;
+}
+
+.blog-text {
+  float: left;
+  padding: 30px 0 0 25px;
+}
+
+.blog-date {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.category {
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #acabab;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+}
+
+.sidebar {
+  width: 230px; /* 横幅 */
+  background-color: palegreen; /* 背景色 */
+  float: left; /* 要素を左揃えで並べる */
+}
+
+footer {
+  width: 100%; /* 横幅 */
+  height: 120px; /* 高さ */
+  text-align: center;
+  padding: 50px 0;
+  background-color: #848282; /* 背景色 */
+}
+.footer-text {
+  color: #fff;
+}

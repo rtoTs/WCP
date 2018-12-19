@@ -1,0 +1,24 @@
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+header {
+  width: 10%;
+}
+
+header .headline {
+  font-size: 22px;
+}
+
+header .nav{
+  text-align: left;
+}
+
+header .list {
+}
+
+header .list-item {
+
+}

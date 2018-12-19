@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+.clearfix::after {
+  content:"";
+  display:block;
+  clear:both;
+}
+ 
+.header {
+  width: 100%; /* 横幅 */
+  height: 120px; /* 高さ */
+  background-color: red; /* 背景色 */
+}
+.header-top{
+  width: 100%; /* 横幅 */
+  height: 70px; /* 高さ */
+  background-color: hotpink; /* 背景色 */
+}
+.header-bottom{
+  width: 100%; /* 横幅 */
+  height: 50px; /* 高さ */
+  background-color: pink; /* 背景色 */
+}
+ 
+.main-visual {
+  width: 100%; /* 横幅 */
+  height: 300px; /* 高さ */
+  background-color: orange; /* 背景色 */
+}
+.main-visual-content{
+  width: 350px; /* 横幅を指定 */
+  height: 300px; /* 親の高さに揃える */
+  background-color: gold; /* 背景色 */
+}
+ 
+.main {
+  width: 840px; /* 横幅 */
+  background-color: green; /* 背景色 */
+  /* 中央寄せ（余白がないとできない） */
+  margin: 0 auto;
+}
+.blog {
+  width: 600px;
+  height: 1400px;
+  background-color: limegreen;
+  float: left; /* 要素を左揃えで並べる */
+}
+.sidebar {
+  width: 240px;
+  height: 1400px;
+  background-color: palegreen;
+  float: left; /* 要素を左揃えで並べる */
+}
+ 
+.footer {
+  width: 100%; /* 横幅 */
+  height: 120px; /* 高さ */
+  background-color: blue; /* 背景色 */
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Document</title>
+<!-- <link rel="stylesheet" href="style.css"> -->
+<style>
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.boxes {
+	width: 600px;
+	background-color: yellow;
+	margin: 0 auto;
+}
+
+.box1 {
+	width: 150px;
+	height: 400px;
+	background-color: orange;
+	float: left;
+}
+
+.box2 {
+	width: 250px;
+	height: 400px;
+	background-color: red;
+	float:right;
+}
+
+</style>
+
+
+</head>
+<body>
+
+<div class="boxes clearfix">
+	<div class="box1"></div>
+	<div class="box2"></div>
+</div>
+
+
+
+</body>
+</html>
+

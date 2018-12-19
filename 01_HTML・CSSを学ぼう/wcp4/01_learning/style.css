@@ -1,0 +1,84 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+header {
+  width: 90%;
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+header .headline {
+  font-size: 32px;
+}
+
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.main-visual {
+  width: 100%; /* 横幅 */
+  height: 300px; /* 高さ */
+  background-color: orange; /* 背景色 */
+}
+
+.main-visual-content {
+  width: 350px; /* 横幅 */
+  height: 300px; /* 高さ */
+  background-color: gold; /* 背景色 */
+}
+
+.main {
+  width: 840px; /* 横幅 */
+  /*height: 1400px; /* 高さ */
+  background-color: green; /* 背景色 */
+  margin: 0 auto;
+}
+
+.blog {
+  width: 600px; /* 横幅 */
+  height: 1400px; /* 高さ */
+  background-color: limegreen; /* 背景色 */
+  float: left; /* 要素を左揃えで並べる */
+}
+
+.sidebar {
+  width: 240px; /* 横幅 */
+  height: 1400px; /* 高さ */
+  background-color: palegreen; /* 背景色 */
+  float: left; /* 要素を左揃えで並べる */
+}
+
+footer {
+  width: 100%; /* 横幅 */
+  height: 120px; /* 高さ */
+  text-align: center;
+  padding: 50px 0;
+  background-color: #848282; /* 背景色 */
+}
+.footer-text {
+  color: #fff;
+}
