@@ -15,3 +15,7 @@
 
 * chapter??_exercise <br>
 演習問題で作成したソースコードの格納場所
+
+## 課題提出フォルダ
+
+wcp9/02_chapter9_task
