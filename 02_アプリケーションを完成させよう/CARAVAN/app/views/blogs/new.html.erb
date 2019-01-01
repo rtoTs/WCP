@@ -1,0 +1,16 @@
+<h1>新規投稿</h1>
+<!-- form_for部分m -->
+<%= form_for(@blog) do |f| %>
+
+	<h3>タイトル</h3>
+	<%= f.text_field :title %>
+
+	<h3>カテゴリー</h3>
+	<%= f.text_field :category %>
+
+	<h3>本文</h3>
+	<%= f.text_area :body %>
+
+	<%= f.submit '投稿' %>
+
+<% end %>
