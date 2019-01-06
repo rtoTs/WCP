@@ -19,28 +19,28 @@
 
           <!-- Home -->
           <li>
-          <%= link_to user_path(current_user.id) do %>
+          <%= link_to user_path(current_user.id), :class => "home" do %>
             <span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp;</span> Home
           <% end %>
           </li>
 
           <!-- Users -->
           <li>
-          <%= link_to users_path do %>
+          <%= link_to users_path, :class => "users" do %>
             <span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;</span> Users
           <% end %>
           </li>
 
           <!-- Books -->
           <li>
-          <%= link_to books_path do %>
+          <%= link_to books_path, :class => "books" do %>
             <span class="glyphicon glyphicon-book" aria-hidden="true">&nbsp;</span> Books
           <% end %>
           </li>
 
           <!-- logout -->
           <li>
-          <%= link_to destroy_user_session_path, method: :DELETE do %>
+          <%= link_to destroy_user_session_path, method: :DELETE, :class => "logout" do %>
             <span class="glyphicon glyphicon-log-out" aria-hidden="true">&nbsp;</span> logout
           <% end %>
           </li>
@@ -49,28 +49,28 @@
 
           <!-- Home -->
           <li>
-          <%= link_to root_path do %>
+          <%= link_to root_path, :class => "home" do %>
             <span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp;</span> Home
           <% end %>
           </li>
 
           <!-- About -->
           <li>
-          <%= link_to home_about_path do %>
+          <%= link_to home_about_path, :class => "about" do %>
             <span class="glyphicon glyphicon-link" aria-hidden="true">&nbsp;</span> About
           <% end %>
           </li>
 
           <!-- sign up -->
           <li>
-          <%= link_to new_user_registration_path do %>
+          <%= link_to new_user_registration_path, :class => "sign_up" do %>
             <span class="glyphicon glyphicon-edit" aria-hidden="true">&nbsp;</span> sign up
           <% end %>
           </li>
 
           <!-- login -->
           <li>
-          <%= link_to new_user_session_path do %>
+          <%= link_to new_user_session_path, :class => "sign_in" do %>
             <span class="glyphicon glyphicon-log-in" aria-hidden="true">&nbsp;</span> login
           <% end %>
           </li>
@@ -81,9 +81,43 @@
 </nav>
 <!-- 下記に条件分岐で遷移してきた時のコメントを入れる -->
 <header>
-  <% if user_signed_in? %>
-  今ログインしていますよ！！！！！！！！！
-  <% else %>
-  今ログインしていませんよorz
+  <div class="notice">
+    <% if flash[:notice].present? then %>
+      notice: 
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+
+    <div class="error">
+    <% if flash[:error].present? then %>
+      error: 
+      <%= flash[:error] %>
+    <% end %>
+  </div>
+
+  <div class="user-error">
+  <% if defined? @user %>
+    <% if @user.errors.any? %>
+      user error:<br>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
+  </div>
+
+  <div class="book-error">
+  <% if defined? @book %>
+    <% if @book.errors.any? %>
+      book error:<br>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+  </div>
 </header>

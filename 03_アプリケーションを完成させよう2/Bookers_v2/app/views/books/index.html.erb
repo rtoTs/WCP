@@ -23,16 +23,16 @@
               		<td style="text-align: right"><%= current_user.introduction %></td>
               	</tr>
               </table>
-              <%= link_to edit_user_path(current_user.id), class: "btn btn-default m-2 rounded-circle user-setting" do %>
+              <%= link_to edit_user_path(current_user.id), class: "btn btn-default m-2 rounded-circle user-setting edit_user_#{current_user.id}" do %>
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               <% end %>
               <h2>New book</h2>
               <%= form_for(@book) do |f| %>
               	Title<br>
-              	<%= f.text_field :title, class: "book-title" %><br>
+              	<%= f.text_field :title, class: "book-title book_title" %><br>
 
               	Opinion<br>
-              	<%= f.text_area :body, class: "book-body" %><br>
+              	<%= f.text_area :body, class: "book-body book_body" %><br>
               	<!-- idを隠れてコソコソ渡したい場合 -->
               	<%= f.hidden_field :user_id, :value => current_user.id %>
               	<%= f.submit "Create Book", class: "btn btn-info m-2 rounded-circle book-submit" %>
@@ -54,7 +54,7 @@
           		    <tr>
           		      <td style='width: 30%'>
           		      	<% if book.user_id == nil %>
-          		          <%= link_to book_path(book) do %>
+          		          <%= link_to book_path(book), :class => "book_#{book.id}" do %>
           		      	    <% if current_user.image_id != nil %>
               			      <%= attachment_image_tag current_user, :image, class: "user-image-mini" %><br>
               			    <% else %>
@@ -62,7 +62,7 @@
               		        <% end %>
               		      <% end %>
           		        <% else %>
-          		          <%= link_to user_path(current_user.id) do %>
+          		          <%= link_to user_path(current_user.id), :class => "user_#{book.user_id}" do %>
           		      	    <% if current_user.image_id != nil %>
               			      <%= attachment_image_tag current_user, :image, class: "user-image-mini" %><br>
               			    <% else %>
@@ -71,7 +71,7 @@
               		      <% end %>
               		    <% end %>
               		  </td>
-          			  <td style='width: 30%'><%= link_to book.title, book_path(book) %></td>
+          			  <td style='width: 30%'><%= link_to book.title, book_path(book), class: "book_#{book.id}" %></td>
           			  <td style='width: 40%'><%= book.body %></td>
           		    </tr>
           		  <% end %>

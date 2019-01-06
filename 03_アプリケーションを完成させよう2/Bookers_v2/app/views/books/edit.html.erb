@@ -5,14 +5,14 @@
   <h1>Editing Book</h1>
   <%= form_for(@book) do |f| %>
     Title<br>
-    <%= f.text_field :title, class: "book-title" %><br>
+    <%= f.text_field :title, class: "book-title book_title" %><br>
     Opinion<br>
-    <%= f.text_area :body, class: "book-body" %><br>
+    <%= f.text_area :body, class: "book-body book_body" %><br>
     <!-- idを隠れてコソコソ渡したい場合 -->
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit "Update Book", class: "btn btn-info m-2 rounded-circle book-submit" %>
   <% end %>
-  <%= link_to "Show", book_path(@book) %> | 
-  <%= link_to "Back", books_path %>
+  <%= link_to "Show", book_path(@book), class: "book_#{@book.id}" %> | 
+  <%= link_to "Back", books_path, class: "back" %>
 </div>
 <%= render 'devise/shared/footer' %>

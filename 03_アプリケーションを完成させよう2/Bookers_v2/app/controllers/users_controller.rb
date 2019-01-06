@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  # ユーザーがログインしているか確認
+  before_action :authenticate_user!
+
   def index
   	@user  = current_user
   	@book  = Book.new
@@ -10,9 +13,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    user.update(user_params)
-    redirect_to user_path(user.id), flash: { notice: "User was successfully updated" }
+    @user = current_user
+    begin
+      @user.update!(user_params)
+      redirect_to user_path(@user), flash: { notice: "User was successfully updated" }
+    rescue
+      redirect_to edit_user_path(@user), flash: { error: @user.errors.full_messages }
+    end
   end
 
   def show

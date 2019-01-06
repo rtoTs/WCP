@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
 
+  #ユーザーがログインしているか確認
+  before_action :authenticate_user!, except: [:about, :start]
+
   def about
   end
 
@@ -20,25 +23,41 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(book_params)
-    book.save
-    redirect_to book_path(book), flash: { notice: "Book was successfully created" }
+    @book = Book.new(book_params)
+    begin
+      @book.save!
+      redirect_to book_path(@book), flash: { notice: "Book was successfully created." }
+    rescue
+      redirect_to books_path, flash: { error: @book.errors.full_messages }
+    end
   end
 
   def edit
     @book = Book.find(params[:id])
+    @user = current_user
+    if @book.user_id.to_i != @user.id
+      redirect_to books_path
+    end
   end
 
   def destroy
     book = Book.find(params[:id])
-    book.destroy
-    redirect_to books_path
+    if book.destroy
+      redirect_to books_path, flash: { notice: "Book was successfully destroyed." }
+    else
+      flash.now[:error] = "Error: Book was not destroyed."
+      render :show
+    end
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book)
+    @book = Book.find(params[:id])
+    begin
+      @book.update!(book_params)
+      redirect_to book_path(@book), flash: { notice: "Book was successfully updated." }
+    rescue
+      redirect_to edit_book_path(@book), flash: { error: @book.errors.full_messages }
+    end
   end
 
   private

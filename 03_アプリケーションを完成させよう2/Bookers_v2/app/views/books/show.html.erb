@@ -23,16 +23,16 @@
               		<td style="text-align: right"><%= @user.introduction %></td>
               	</tr>
               </table>
-              <%= link_to edit_user_path(current_user.id), class: "btn btn-default m-2 rounded-circle user-setting" do %>
+              <%= link_to edit_user_path(current_user.id), class: "btn btn-default m-2 rounded-circle user-setting edit_user_#{current_user.id}" do %>
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               <% end %>
               <h2>New book</h2>
               <%= form_for(@book) do |f| %>
               	Title<br>
-              	<%= f.text_field :title, class: "book-title" %><br>
+              	<%= f.text_field :title, class: "book-title book_title" %><br>
 
               	Opinion<br>
-              	<%= f.text_area :body, class: "book-body" %><br>
+              	<%= f.text_area :body, class: "book-body book_body" %><br>
               	<!-- idを隠れてコソコソ渡したい場合 -->
               	<%= f.hidden_field :user_id, :value => current_user.id %>
               	<%= f.submit "Create Book", class: "btn btn-info m-2 rounded-circle book-submit" %>
@@ -46,7 +46,7 @@
           		  <tr>
           		    <td style='width: 15%'>
           		      <% if @book_info.user_id == nil %>
-          		        <%= link_to book_path(@book_info) do %>
+          		        <%= link_to book_path(@book_info), :class => "book_#{@book_info.id}" do %>
           		          <% if @user.image_id != nil %>
               			    <%= attachment_image_tag current_user, :image, class: "user-image-mini" %><br>
               			  <% else %>
@@ -55,7 +55,7 @@
               		      <% @user.username %>
               		    <% end %>
           		      <% else %>
-          		        <%= link_to user_path(@book_info.user_id) do %>
+          		        <%= link_to user_path(@book_info.user_id), :class => "user_#{@book_info.user_id}" do %>
           		    	  <% if current_user.image_id != nil %>
               			    <%= attachment_image_tag current_user, :image, class: "user-image-mini" %><br>
               			  <% else %>
@@ -66,7 +66,7 @@
               		  <% end %>
               		  </td>
               		  <!--  本のタイトルの表示 -->
-          			  <td style='width: 15%'><%= link_to @book_info.title, book_path(@book_info) %></td>
+          			  <td style='width: 15%'><%= link_to @book_info.title, book_path(@book_info), class: "book_#{@book_info.id}" %></td>
 
           			  <!-- 本を登録したユーザーと閲覧中のユーザーが同じとき -->
           			  <% if current_user.id == @book_info.user_id.to_i %>
@@ -74,8 +74,8 @@
           			      <%= @book_info.body %>
           			    </td>
           			    <td style='width: 30%'>
-          			      <%= link_to "Edit", edit_book_path(@book_info), class: 'btn btn-success m-2 rounded-circle' %>
-						  <%= link_to "Destroy", book_path(@book_info), class: 'btn btn-danger m-2 rounded-circle', method: :delete, data: { confirm: '本当に消しますか？'} %>
+          			      <%= link_to "Edit", edit_book_path(@book_info), class: "btn btn-success m-2 rounded-circle edit_book_#{@book_info.id}" %>
+						  <%= link_to "Destroy", book_path(@book_info), class: "btn btn-danger m-2 rounded-circle destroy_book_#{@book_info.id}", method: :delete, data: { confirm: '本当に消しますか？'} %>
 						</td>
           			  <% else %>
           			    <td style='width: 70%'>

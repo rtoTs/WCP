@@ -7,10 +7,13 @@ you can share and exchange your opinions , inpressions , and emotions<br>
 
 about varioius books!<br>
 
-<div class="row btn-group-vertical col-lg-5">
-<%= link_to "Log in", new_user_session_path, class: 'btn btn-info m-2 rounded-circle' %>
-<%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success m-2 rounded-circle' %>
+<div class="container">
+  <div class="row">
+    <div class="btn-group-vertical col-lg-5">
+      <%= link_to "Log in", new_user_session_path, class: 'btn btn-info m-2 rounded-circle sign_in' %>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success m-2 rounded-circle sign_up' %>
+    </div>
+  </div>
 </div>
-
 
 <%= render 'devise/shared/footer' %>
