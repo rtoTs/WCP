@@ -1,0 +1,89 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container container-fluid">
+    <div class="navbar-header col-lg-3">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <nav class="nav navbar-nav navbar-left col-lg-9" href="#" style="color: #fff;font-size: 20px;">
+        Bookers
+      </nav>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="navbarEexample7">
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <!-- <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;</span>Users</a></li> -->
+
+          <!-- Home -->
+          <li>
+          <%= link_to user_path(current_user.id) do %>
+            <span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp;</span> Home
+          <% end %>
+          </li>
+
+          <!-- Users -->
+          <li>
+          <%= link_to users_path do %>
+            <span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;</span> Users
+          <% end %>
+          </li>
+
+          <!-- Books -->
+          <li>
+          <%= link_to books_path do %>
+            <span class="glyphicon glyphicon-book" aria-hidden="true">&nbsp;</span> Books
+          <% end %>
+          </li>
+
+          <!-- logout -->
+          <li>
+          <%= link_to destroy_user_session_path, method: :DELETE do %>
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true">&nbsp;</span> logout
+          <% end %>
+          </li>
+
+        <% else %>
+
+          <!-- Home -->
+          <li>
+          <%= link_to root_path do %>
+            <span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp;</span> Home
+          <% end %>
+          </li>
+
+          <!-- About -->
+          <li>
+          <%= link_to home_about_path do %>
+            <span class="glyphicon glyphicon-link" aria-hidden="true">&nbsp;</span> About
+          <% end %>
+          </li>
+
+          <!-- sign up -->
+          <li>
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true">&nbsp;</span> sign up
+          <% end %>
+          </li>
+
+          <!-- login -->
+          <li>
+          <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true">&nbsp;</span> login
+          <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- 下記に条件分岐で遷移してきた時のコメントを入れる -->
+<header>
+  <% if user_signed_in? %>
+  今ログインしていますよ！！！！！！！！！
+  <% else %>
+  今ログインしていませんよorz
+  <% end %>
+</header>

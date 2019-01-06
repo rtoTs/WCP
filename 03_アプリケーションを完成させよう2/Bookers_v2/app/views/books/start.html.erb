@@ -1,0 +1,16 @@
+<%= render 'devise/shared/header' %>
+
+<h1>welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers !!</h1>
+In <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers,
+
+you can share and exchange your opinions , inpressions , and emotions<br>
+
+about varioius books!<br>
+
+<div class="row btn-group-vertical col-lg-5">
+<%= link_to "Log in", new_user_session_path, class: 'btn btn-info m-2 rounded-circle' %>
+<%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success m-2 rounded-circle' %>
+</div>
+
+
+<%= render 'devise/shared/footer' %>

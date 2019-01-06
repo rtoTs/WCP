@@ -1,0 +1,84 @@
+<%= render 'devise/shared/header' %>
+
+<div class="container">
+      <div class="row">
+          <!-- 以下を追加 -->
+          <!-- 左のユーザー情報の表示 -->
+          <div class="col-lg-3">
+              <h2>User info</h2>
+              <!-- 　画像のデータが存在するかで表示する画像を変更する -->
+              <% if @user.image_id != nil %>
+              	<%= attachment_image_tag @user, :image, class: "user-image" %><br>
+              <% else %>
+              	<%= image_tag('no-image.jpg', :class => "user-image") %><br>
+              <% end %>
+              
+              <table width="100%" class="table">
+              	<tr>
+              		<td style="text-align: left">name</td>
+              		<td style="text-align: right"><%= @user.username %></td>
+              	</tr>
+              	<tr>
+              		<td style="text-align: left">introduction</td>
+              		<td style="text-align: right"><%= @user.introduction %></td>
+              	</tr>
+              </table>
+              <%= link_to edit_user_path(current_user.id), class: "btn btn-default m-2 rounded-circle user-setting" do %>
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              <% end %>
+              <h2>New book</h2>
+              <%= form_for(@book) do |f| %>
+              	Title<br>
+              	<%= f.text_field :title, class: "book-title" %><br>
+
+              	Opinion<br>
+              	<%= f.text_area :body, class: "book-body" %><br>
+              	<!-- idを隠れてコソコソ渡したい場合 -->
+              	<%= f.hidden_field :user_id, :value => current_user.id %>
+              	<%= f.submit "Create Book", class: "btn btn-info m-2 rounded-circle book-submit" %>
+              <% end %>
+          </div>
+          <!-- 本の投稿の表示 -->
+          <div class="col-lg-9">
+          	<h2>Books</h2>
+          	<table width="100%" class="table table-hover">
+          		<thead style='border-style: none;'>
+          		  <tr>
+            		<th style='width: 30%;'>  </th>
+          		    <th style='width: 30%;'>Title</th>
+          		    <th style='width: 40%;'>Opinion</th>
+          		  </tr>
+          		</thead>
+          		<tbody> 
+          		  <% @books.each do |book| %>
+          		    <tr>
+          		      <td style='width: 30%'>
+          		      	<% if book.user_id == nil %>
+          		          <%= link_to book_path(book) do %>
+          		      	    <% if current_user.image_id != nil %>
+              			      <%= attachment_image_tag current_user, :image, class: "user-image-mini" %><br>
+              			    <% else %>
+              			      <%= image_tag('no-image.jpg', :class => "user-image-mini") %><br>
+              		        <% end %>
+              		      <% end %>
+          		        <% else %>
+          		          <%= link_to user_path(current_user.id) do %>
+          		      	    <% if current_user.image_id != nil %>
+              			      <%= attachment_image_tag current_user, :image, class: "user-image-mini" %><br>
+              			    <% else %>
+              			      <%= image_tag('no-image.jpg', :class => "user-image-mini") %><br>
+              		        <% end %>
+              		      <% end %>
+              		    <% end %>
+              		  </td>
+          			  <td style='width: 30%'><%= link_to book.title, book_path(book) %></td>
+          			  <td style='width: 40%'><%= book.body %></td>
+          		    </tr>
+          		  <% end %>
+          		</tbody>
+          	</table>
+          </div>
+      </div>
+</div>
+
+<%= render 'devise/shared/footer' %>

@@ -1,0 +1,18 @@
+<%= render 'devise/shared/header' %>
+
+<div class="container">
+  <div class="row col-lg-6" style="margin: 0 auto;">
+  <h1>Editing Book</h1>
+  <%= form_for(@book) do |f| %>
+    Title<br>
+    <%= f.text_field :title, class: "book-title" %><br>
+    Opinion<br>
+    <%= f.text_area :body, class: "book-body" %><br>
+    <!-- idを隠れてコソコソ渡したい場合 -->
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "Update Book", class: "btn btn-info m-2 rounded-circle book-submit" %>
+  <% end %>
+  <%= link_to "Show", book_path(@book) %> | 
+  <%= link_to "Back", books_path %>
+</div>
+<%= render 'devise/shared/footer' %>
